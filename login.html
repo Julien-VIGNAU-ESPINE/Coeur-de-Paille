@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Cœur de Paille</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container animate-fade-in">
+        <header class="register-header">
+            <a href="index.html" class="back-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Retour</span>
+            </a>
+            <h2>Connexion</h2>
+        </header>
+
+        <form id="loginForm" class="form-section">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required placeholder="votre@email.com">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" required placeholder="Votre mot de passe">
+            </div>
+
+            <div style="margin-bottom: 20px; text-align: right;">
+                <a href="#" style="font-size: 0.9rem; color: var(--c-green-light);">Mot de passe oublié ?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <p style="color: #666;">Pas encore de compte ?</p>
+            <a href="register.html"
+                style="color: var(--c-green-dark); font-weight: 600; text-decoration: underline;">Créer une
+                exploitation</a>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="js/services/firebase-config.js"></script>
+
+    <script src="js/services/mock-data.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
