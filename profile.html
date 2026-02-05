@@ -51,8 +51,8 @@
             style="background-image: url('https://images.unsplash.com/photo-1595960009667-fe6240292728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="profile-avatar-large" id="myAvatar"></div>
             <div class="profile-actions">
-                <button class="btn btn-primary btn-small">Modifier</button>
-                <button class="btn btn-outline btn-small"
+                <button id="btnOpenEdit" class="btn btn-primary btn-small">Modifier</button>
+                <button id="btnOpenSettings" class="btn btn-outline btn-small"
                     style="background:white; border:none; box-shadow: var(--shadow-card);">⚙️</button>
             </div>
         </div>
@@ -113,34 +113,138 @@
                     <h3>ℹ️ Informations</h3>
                     <div class="info-list">
                         <p><span class="info-icon">📍</span> <span id="infoLoc">Localisation inconnue</span></p>
-                        <p><span class="info-icon">🚜</span> <span id="infoRole">Agriculteur</span></p>
-                        <p><span class="info-icon">🎂</span> <span>29 ans</span></p>
+                        <p><span class="info-icon">�</span> <span id="infoRole">Agriculteur</span></p>
+                        <p><span class="info-icon">🎂</span> <span id="infoAge">29 ans</span></p>
                         <p><span class="info-icon">📧</span> <span id="infoEmail">email@exemple.com</span></p>
                     </div>
                 </div>
 
                 <!-- Actions -->
-                <div class="dashboard-card">
-                    <h3>Paramètres</h3>
-                    <div class="menu-list" style="box-shadow: none; margin-bottom: 0;">
-                        <div class="menu-item">
-                            <span class="icon">🔔</span>
-                            <span>Notifications</span>
-                        </div>
-                        <div class="menu-item">
-                            <span class="icon">🔒</span>
-                            <span>Confidentialité</span>
-                        </div>
-                        <div class="menu-item" onclick="handleLogout()" style="color: #c0392b;">
-                            <span class="icon">🚪</span>
-                            <span>Déconnexion</span>
-                        </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content animate-fade-in">
+            <header class="modal-header">
+                <h2>Modifier le Profil</h2>
+                <span class="close-modal" id="closeEditProfile">&times;</span>
+            </header>
+            <div class="filter-group">
+                <label>Photo de Profil</label>
+                <div class="avatar-upload-container">
+                    <div class="avatar-preview" id="previewAvatar"></div>
+                    <label for="editAvatarFile" class="btn-upload">Changer la photo</label>
+                    <input type="file" id="editAvatarFile" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label>Nom</label>
+                <input type="text" id="editName" value="Julien Vignau">
+            </div>
+            <div class="filter-group">
+                <label>Date de Naissance</label>
+                <input type="date" id="editDob">
+            </div>
+
+            <!-- ... existing fields ... -->
+
+            <div class="filter-group">
+                <label>Bio</label>
+                <textarea id="editBio" rows="4"
+                    style="width: 100%; padding: 14px; border: 2px solid #eee; border-radius: 12px; font-family: inherit; resize: none;">Passionné par l'agro-écologie...</textarea>
+            </div>
+
+            <div class="filter-group">
+                <label>Bannière de Profil</label>
+                <div class="banner-grid" id="bannerSelector">
+                    <!-- Presets will be injected or hardcoded here -->
+                    <div class="banner-option"
+                        data-url="https://images.unsplash.com/photo-1595960009667-fe6240292728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                        <img src="https://images.unsplash.com/photo-1595960009667-fe6240292728?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                            alt="Champ">
+                    </div>
+                    <div class="banner-option"
+                        data-url="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                            alt="Montagne">
+                    </div>
+                    <div class="banner-option"
+                        data-url="https://images.unsplash.com/photo-1492496913980-501348b61469?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                        <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                            alt="Tracteur">
+                    </div>
+                    <div class="banner-option"
+                        data-url="https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                        <img src="https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                            alt="Forêt">
                     </div>
                 </div>
             </div>
 
+            <div class="filter-group">
+                <label>Localisation</label>
+                <input type="text" id="editLoc" value="Auch, Gers">
+            </div>
+            <div class="filter-group">
+                <label>Activité</label>
+                <input type="text" id="editActivity" value="Éleveur Ovin">
+            </div>
+            <button class="btn btn-primary" id="saveProfile" style="width:100%">Enregistrer</button>
         </div>
+    </div>
 
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content animate-fade-in">
+            <header class="modal-header">
+                <h2>Paramètres</h2>
+                <span class="close-modal" id="closeSettings">&times;</span>
+            </header>
+
+            <div class="settings-group">
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <h4>Notifications</h4>
+                        <p>Être averti des nouveaux messages</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleNotifs" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <h4>Mode Privé</h4>
+                        <p>Cacher mon profil de la découverte</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="togglePrivate">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <h4>Sons</h4>
+                        <p>Effets sonores de l'application</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleSounds">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-outline" onclick="handleLogout()"
+                style="width:100%; margin-top:20px; color: #c0392b; border-color: #c0392b;">
+                Déconnexion
+            </button>
+        </div>
     </div>
 
     <!-- Firebase SDKs -->
