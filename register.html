@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Cœur de Paille</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container page-register animate-fade-in">
+        <header class="register-header">
+            <a href="index.html" class="back-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </a>
+            <h1>Créer mon profil</h1>
+        </header>
+
+        <form id="registerForm" class="register-form">
+
+            <div class="form-section">
+                <h3>Identifiants</h3>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required placeholder="amour@pre.com">
+                </div>
+                <div class="input-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Qui êtes-vous ?</h3>
+                <div class="input-group">
+                    <label>Prénom</label>
+                    <input type="text" id="name" required placeholder="Jean">
+                </div>
+                <div class="input-group">
+                    <label>Sexe</label>
+                    <select id="gender" required>
+                        <option value="male">Homme</option>
+                        <option value="female">Femme</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Je suis...</label>
+                    <select id="role" required onchange="toggleFarmFields()">
+                        <option value="farmer">Agriculteur / Agricultrice</option>
+                        <option value="civilian">Non-Agriculteur / Citadin(e)</option>
+                    </select>
+                </div>
+
+                <!-- Farmer Specific Fields -->
+                <div id="farmFields">
+                    <div class="input-group">
+                        <label>Type d'exploitation</label>
+                        <input type="text" id="farmType" placeholder="Ex: Éleveur laitier, Viticulteur...">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Localisation</label>
+                    <input type="text" id="location" required placeholder="Ex: Normandie, Bordeaux...">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Vos attentes</h3>
+                <div class="input-group">
+                    <label>Je cherche...</label>
+                    <select id="preference" required>
+                        <option value="farmer">Un(e) Agriculteur(ice)</option>
+                        <option value="civilian">Peu importe / Quelqu'un d'autre</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Petite bio (votre accroche)</label>
+                    <textarea id="bio" rows="3" placeholder="Dites-nous ce qui vous fait vibrer..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btnSubmit">
+                S'inscrire
+            </button>
+        </form>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+    <script src="js/services/firebase-config.js"></script>
+    <script src="js/services/mock-data.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/register.js"></script>
+
+    <script>
+        function toggleFarmFields() {
+            const role = document.getElementById('role').value;
+            const fields = document.getElementById('farmFields');
+            if (role === 'farmer') {
+                fields.style.display = 'block';
+            } else {
+                fields.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cœur de Paille</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container hero animate-fade-in">
+        <div class="logo-container">
+            <!-- SVG Heart Icon using inline for more control or simple div with background -->
+            <svg width="100" height="100" viewBox="0 0 24 24" fill="var(--c-straw)" stroke="var(--c-green-dark)"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+            </svg>
+        </div>
+
+        <h1 class="brand-title">Cœur de Paille</h1>
+        <p class="brand-subtitle">L'amour est dans le pré...<br>et dans votre poche.</p>
+
+        <div class="auth-buttons">
+            <a href="discovery.html" class="btn btn-primary" onclick="//simulateLogin()">Se connecter</a>
+            <a href="register.html" class="btn btn-outline">Créer mon exploitation</a>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs (Compat version for easier CDN usage) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+    <script src="js/services/firebase-config.js"></script>
+</body>
+
+</html>
