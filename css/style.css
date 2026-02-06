@@ -571,3 +571,267 @@ input:checked+.slider:before {
 .close-modal:hover {
     color: var(--c-wood);
 }
+
+/* --- Discovery Revamp Styles --- */
+
+.discovery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 20px 0;
+}
+
+.discovery-header h2 {
+    font-size: 1.5rem;
+    color: var(--c-green-dark);
+}
+
+.btn-icon-only {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--c-green-light);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.btn-icon-only:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--c-green-dark);
+}
+
+/* Updated Card Stack */
+.card-stack-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 60vh;
+    /* Fixed height for consistency */
+    max-height: 600px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.profile-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s;
+    /* Optional: add a slight border for separation */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.profile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.profile-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    color: white;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.profile-content h2 {
+    color: white;
+    /* Override default heading color */
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.profile-type {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.badges-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-bio {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    font-style: italic;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Action Buttons Container */
+.action-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.action-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-pass {
+    color: #E74C3C;
+}
+
+.btn-like {
+    color: #27AE60;
+    width: 70px;
+    height: 70px;
+}
+
+/* Slightly bigger */
+.btn-super {
+    color: #3498DB;
+    width: 50px;
+    height: 50px;
+}
+
+/* Match Modal Specifics */
+.match-content {
+    background: white;
+    /* Or a fancy gradient */
+    width: 90%;
+    max-width: 350px;
+    padding: 40px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.match-header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    color: #e74c3c;
+    /* Love Red */
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.match-avatars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+.match-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-size: cover;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.match-avatar:first-child {
+    transform: translateX(10px);
+    z-index: 1;
+}
+
+.match-avatar:last-child {
+    transform: translateX(-10px);
+    z-index: 2;
+}
+
+.match-icon {
+    position: absolute;
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.match-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Animations */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-pop-in {
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
